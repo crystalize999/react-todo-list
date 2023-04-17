@@ -17,6 +17,7 @@ export interface TodolistPropsInterface {
   removeTask: (id: string) => void;
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
+  changeTaskStatus: (taskId : string, isDone: boolean) => void;
 }
 
 function App() {
@@ -42,6 +43,14 @@ function App() {
     setTasks(newTasks);
   }
 
+  function changeStatus (taskId : string, isDone: boolean) {
+    let task = tasks.find( t => t.id === taskId)
+    if (task) {
+      task.isDone = isDone
+    }
+    setTasks([...tasks]);
+  }
+
   function changeFilter(value: FilterValuesType) {
     setFilter(value);
   }
@@ -62,6 +71,7 @@ function App() {
         removeTask={removeTask}
         changeFilter={changeFilter}
         addTask={addTask}
+        changeTaskStatus = {changeStatus}
       />
     </div>
   );
