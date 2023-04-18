@@ -18,6 +18,7 @@ export interface TodolistPropsInterface {
   changeFilter: (value: FilterValuesType) => void;
   addTask: (title: string) => void;
   changeTaskStatus: (taskId : string, isDone: boolean) => void;
+  filter: FilterValuesType
 }
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
         changeFilter={changeFilter}
         addTask={addTask}
         changeTaskStatus = {changeStatus}
+        filter={filter}
       />
     </div>
   );
