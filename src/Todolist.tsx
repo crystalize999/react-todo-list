@@ -8,7 +8,7 @@ import { error } from "console";
 export function Todolist(props: TodolistPropsInterface) {
 
   const [newTaskTitle, setNewTaskTitle] = useState("")
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
 
   const onNewTitleChangeHandler = (e : ChangeEvent<HTMLInputElement>) => {
       setNewTaskTitle(e.currentTarget.value)
@@ -23,8 +23,11 @@ export function Todolist(props: TodolistPropsInterface) {
       }
   }
   const addNewTask = () => {
-    if (newTaskTitle.trim() === ""){
+    if ( newTaskTitle.trim() === ""){
       return;
+    }
+    else {
+      setError("Field is required");
     }
     props.addTask(newTaskTitle);
     setNewTaskTitle("")
